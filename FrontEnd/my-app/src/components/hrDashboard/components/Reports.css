@@ -1,0 +1,324 @@
+.reports-container {
+  padding: 20px;
+}
+
+.reports-header {
+  margin-bottom: 30px;
+}
+
+.reports-header h2 {
+  margin: 0 0 20px;
+  color: #2c3e50;
+}
+
+.report-controls {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.date-filters {
+  display: flex;
+  gap: 15px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-group label {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.filter-group input,
+.report-type-select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #2c3e50;
+}
+
+.generate-btn {
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.generate-btn:hover {
+  background-color: #2980b9;
+}
+
+.report-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.report-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.report-card h3 {
+  margin: 0 0 10px;
+  color: #666;
+  font-size: 1rem;
+}
+
+.stat-value {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.stat-change {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+}
+
+.stat-change.positive {
+  color: #2ecc71;
+}
+
+.stat-change.negative {
+  color: #e74c3c;
+}
+
+.stat-change.neutral {
+  color: #95a5a6;
+}
+
+.charts-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.chart-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container h3 {
+  margin: 0 0 20px;
+  color: #2c3e50;
+}
+
+.chart {
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.chart-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.bar-fill {
+  width: 40px;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.3s ease;
+}
+
+.bar-label {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.percentage {
+  display: block;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.category {
+  display: block;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.department-chart {
+  flex-direction: column;
+  gap: 15px;
+}
+
+.dept-bar {
+  width: 100%;
+}
+
+.dept-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.dept-name {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.dept-value {
+  color: #666;
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #3498db;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.trends-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.trends-section h3 {
+  margin: 0 0 20px;
+  color: #2c3e50;
+}
+
+.trends-chart {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 250px;
+  padding: 20px 0;
+}
+
+.trend-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trend-bars {
+  display: flex;
+  gap: 5px;
+  height: 200px;
+  align-items: flex-end;
+}
+
+.trend-bar {
+  width: 30px;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  transition: height 0.3s ease;
+}
+
+.trend-bar.attendance {
+  background-color: #3498db;
+}
+
+.trend-bar.leaves {
+  background-color: #e74c3c;
+}
+
+.trend-value {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.trend-label {
+  margin-top: 10px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.trends-legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.legend-color.attendance {
+  background-color: #3498db;
+}
+
+.legend-color.leaves {
+  background-color: #e74c3c;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .reports-container {
+    padding: 10px;
+  }
+
+  .report-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .date-filters {
+    flex-direction: column;
+  }
+
+  .charts-section {
+    grid-template-columns: 1fr;
+  }
+
+  .trend-bar {
+    width: 20px;
+  }
+
+  .trend-value {
+    font-size: 0.7rem;
+  }
+}
