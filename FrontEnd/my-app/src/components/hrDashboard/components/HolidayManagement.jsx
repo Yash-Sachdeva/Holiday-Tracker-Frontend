@@ -31,7 +31,7 @@ const HolidayManagement = () => {
 
   const fetchClients = async () => {
     try {
-      const response = await fetch('http://localhost:8080/auth/client/all', {
+      const response = await fetch('http://localhost:8000/cs/client/all', {
         credentials: 'include'
       });
       if (!response.ok) throw new Error('Failed to fetch clients');
@@ -47,7 +47,7 @@ const HolidayManagement = () => {
   const fetchHolidays = async (clientName) => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:8081/holiday/get/${encodeURIComponent(clientName)}`, {
+      const response = await fetch(`http://localhost:8000/hs/holiday/get/${encodeURIComponent(clientName)}`, {
         credentials: 'include'
       });
       if (!response.ok) throw new Error('Failed to fetch holidays');
@@ -95,7 +95,7 @@ const HolidayManagement = () => {
     if (!window.confirm('Are you sure you want to delete this holiday?')) return;
 
     try {
-      const response = await fetch(`http://localhost:8081/holiday/delete/${holidayId}`, {
+      const response = await fetch(`http://localhost:8000/hs/holiday/delete/${holidayId}`, {
         method: 'DELETE',
         credentials: 'include'
       });
@@ -123,8 +123,8 @@ const HolidayManagement = () => {
 
     try {
       const url = editingHoliday 
-        ? `http://localhost:8081/holiday/update/${editingHoliday.holidayId}`
-        : 'http://localhost:8081/holiday/add';
+        ? `http://localhost:8000/hs/holiday/update/${editingHoliday.holidayId}`
+        : 'http://localhost:8000/hs/holiday/add';
       
       const response = await fetch(url, {
         method: editingHoliday ? 'PUT' : 'POST',

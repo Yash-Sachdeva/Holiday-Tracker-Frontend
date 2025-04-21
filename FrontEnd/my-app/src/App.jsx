@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
-import HRLogin from './components/hrLogin/HRLogin';
 import EmpLogin from './components/empLogin/EMPLogin';
 import HRDashboard from './components/hrDashboard/HRDashboard';
 import EmployeeDashboard from './components/employeeDashboard/EmployeeDashboard';
@@ -27,13 +26,9 @@ const HomePage = () => {
           <h1>Holiday Tracker</h1>
         </div>
         <nav className="nav-buttons">
-          <button onClick={() => navigate('/hr-login')} className="login-btn hr">
-            <i className="button-icon">👤</i>
-            HR Login
-          </button>
           <button onClick={() => navigate('/employee-login')} className="login-btn employee">
             <i className="button-icon">👥</i>
-            Employee Login
+             Login
           </button>
         </nav>
       </header>
@@ -248,7 +243,6 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/hr-login" element={<HRLogin />} />
           <Route path="/employee-login" element={<EmpLogin />} />
           <Route path="/hr-dashboard/*" element={
             <ProtectedRoute userType="hr">
@@ -260,7 +254,7 @@ function App() {
               <AdminDashboard />
             </ProtectedRoute>
           } />
-          <Route path="/employee-dashboard" element={
+          <Route path="/employee-dashboard/*" element={
             <ProtectedRoute userType="employee">
               <EmployeeDashboard />
             </ProtectedRoute>

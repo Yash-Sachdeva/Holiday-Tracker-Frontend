@@ -21,7 +21,7 @@ const ClientManagement = () => {
 
   const fetchClients = async () => {
     try {
-      const response = await fetch('http://localhost:8080/auth/admin/clients', {
+      const response = await fetch('http://localhost:8000/cs/client/clients', {
         credentials: 'include'
       });
       if (!response.ok) throw new Error('Failed to fetch clients');
@@ -56,8 +56,8 @@ const ClientManagement = () => {
     e.preventDefault();
     try {
       const url = editingClient
-        ? 'http://localhost:8080/auth/admin/update/client'
-        : 'http://localhost:8080/auth/admin/clients';
+        ? 'http://localhost:8080/admin/update-client'
+        : 'http://localhost:8080/admin/add-client';
 
       const method = editingClient ? 'PUT' : 'POST';
 
@@ -95,7 +95,7 @@ const ClientManagement = () => {
     if (!window.confirm('Are you sure you want to delete this client?')) return;
 
     try {
-      const response = await fetch('http://localhost:8080/auth/admin/delete/client', {
+      const response = await fetch('http://localhost:8080/admin/delete-client', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

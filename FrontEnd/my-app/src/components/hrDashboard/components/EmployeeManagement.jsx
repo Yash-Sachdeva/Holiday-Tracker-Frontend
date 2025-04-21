@@ -30,7 +30,7 @@ const EmployeeManagement = () => {
 
   const fetchClients = async () => {
     try {
-      const response = await fetch('http://localhost:8080/auth/client/all', {
+      const response = await fetch('http://localhost:8000/cs/client/all', {
         credentials: 'include'
       });
       if (!response.ok) throw new Error('Failed to fetch clients');
@@ -43,7 +43,7 @@ const EmployeeManagement = () => {
 
   const fetchEmployees = async () => {
     try {
-      const response = await fetch('http://localhost:8080/auth/all/employee', {
+      const response = await fetch('http://localhost:8000/hrs/hr/all-employee', {
         credentials: 'include'
       });
       if (!response.ok) throw new Error('Failed to fetch employees');
@@ -68,8 +68,8 @@ const EmployeeManagement = () => {
     e.preventDefault();
     try {
       const url = editingEmployee
-        ? 'http://localhost:8080/auth/update/employee'
-        : 'http://localhost:8080/auth/register/employee';
+        ? 'http://localhost:8000/hrs/hr/update-employee'
+        : 'http://localhost:8000/hrs/hr/register-employee';
       
       const method = editingEmployee ? 'PUT' : 'POST';
       
@@ -134,7 +134,7 @@ const EmployeeManagement = () => {
 
   const handleDelete = async (employeeId) => {
     try {
-      const response = await fetch(`http://localhost:8080/auth/delete/employee/${employeeId}`, {
+      const response = await fetch(`http://localhost:8000/hrs/hr/delete-employee/${employeeId}`, {
         method: 'DELETE',
         credentials: 'include'
       });

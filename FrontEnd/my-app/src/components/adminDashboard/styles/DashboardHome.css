@@ -1,13 +1,16 @@
 .dashboard-home {
   padding: 20px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .welcome-banner {
-  background: linear-gradient(135deg, #3498db, #2c3e50);
-  color: white;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 15px;
   padding: 30px;
-  border-radius: 12px;
   margin-bottom: 30px;
+  color: var(--white);
 }
 
 .welcome-text h2 {
@@ -19,22 +22,30 @@
 .welcome-text p {
   margin: 10px 0 0;
   opacity: 0.9;
+  font-size: 1.1rem;
 }
 
 .analytics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
   margin-bottom: 30px;
+  width: 100%;
 }
 
 .analytics-card {
-  background: white;
+  background: var(--white);
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.analytics-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
 }
 
 .card-icon {
@@ -48,34 +59,36 @@
   margin-right: 15px;
 }
 
-.card-icon.hrs { background-color: #e8f5e9; }
+.card-icon.hrs { background-color: var(--primary-light); }
 .card-icon.employees { background-color: #fff3e0; }
 .card-icon.clients { background-color: #e3f2fd; }
 
 .card-content h3 {
   margin: 0;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--light-text);
 }
 
 .stat-number {
   margin: 5px 0 0;
   font-size: 1.8rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--dark-color);
 }
 
 .dashboard-sections {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  width: 100%;
 }
 
 .section {
-  background: white;
+  background: var(--white);
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
 }
 
 .section-header {
@@ -87,7 +100,7 @@
 
 .section-header h3 {
   margin: 0;
-  color: #2c3e50;
+  color: var(--dark-color);
   font-size: 1.2rem;
 }
 
@@ -102,7 +115,7 @@
 /* Error State */
 .error-message {
   background-color: #fee2e2;
-  color: #dc2626;
+  color: var(--danger-color);
   padding: 12px;
   border-radius: 6px;
   margin-bottom: 20px;
@@ -113,11 +126,20 @@
   .dashboard-sections {
     grid-template-columns: 1fr;
   }
+  
+  .dashboard-home {
+    padding: 15px;
+  }
 }
 
 @media (max-width: 768px) {
+  .dashboard-home {
+    padding: 10px;
+  }
+
   .welcome-banner {
     padding: 20px;
+    margin-bottom: 20px;
   }
 
   .welcome-text h2 {
@@ -126,6 +148,7 @@
 
   .analytics-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
   }
 }
 

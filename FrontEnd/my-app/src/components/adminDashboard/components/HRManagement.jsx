@@ -25,7 +25,7 @@ const HRManagement = () => {
 
   const fetchHRs = async () => {
     try {
-      const response = await fetch('http://localhost:8080/auth/admin/hrs', {
+      const response = await fetch('http://localhost:8000/adms/admin/all-hr', {
         credentials: 'include'
       });
       if (!response.ok) throw new Error('Failed to fetch HRs');
@@ -50,8 +50,8 @@ const HRManagement = () => {
     e.preventDefault();
     try {
       const url = editingHR
-        ? 'http://localhost:8080/auth/admin/update/hr'
-        : 'http://localhost:8080/auth/admin/hrs';
+        ? 'http://localhost:8000/adms/admin/update-hr'
+        : 'http://localhost:8000/adms/admin/register-hr';
 
       const method = editingHR ? 'PUT' : 'POST';
 
@@ -114,7 +114,7 @@ const HRManagement = () => {
 
   const handleDelete = async (hr) => {
     try {
-      const response = await fetch('http://localhost:8080/auth/admin/delete/hr', {
+      const response = await fetch('http://localhost:8000/adms/admin/delete-hr', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

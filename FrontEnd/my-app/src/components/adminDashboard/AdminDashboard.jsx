@@ -5,7 +5,6 @@ import Sidebar from './components/Sidebar';
 import DashboardHome from './components/DashboardHome';
 import HRManagement from './components/HRManagement';
 import ClientManagement from './components/ClientManagement';
-import MobileMenuToggle from './components/MobileMenuToggle';
 import './styles/AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -14,7 +13,6 @@ const AdminDashboard = () => {
   const { logout } = useAuth();
   const navigate = useNavigate();
 
-  // Close mobile menu when screen size changes
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768 && isMobileMenuOpen) {
@@ -36,13 +34,22 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="admin-dashboard-container">
+      <nav className="dashboard-nav">
+        <div className="nav-content">
+          <h1>Admin Dashboard</h1>
+          <button onClick={handleLogout} className="logout-btn">
+            Logout
+          </button>
+        </div>
+      </nav>
+      
       <div className="dashboard-content">
         <Sidebar 
           isOpen={isMobileMenuOpen} 
           onClose={() => setIsMobileMenuOpen(false)}
         />
-        <main className={`dashboard-main ${isMobileMenuOpen ? 'menu-open' : ''}`}>
+        <main className="dashboard-main">
           {error && (
             <div className="error-message" role="alert">
               {error}

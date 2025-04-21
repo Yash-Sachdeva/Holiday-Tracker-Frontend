@@ -11,8 +11,24 @@ import './styles/HRDashboard.css';
 const HRDashboard = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [error, setError] = useState(null);
-  const { logout } = useAuth();
+  const { logout, isAuthenticated, userRole, checkSession } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const verifyAuth = async () => {
+      if (!isAuthenticated || userRole !== 'HR') {
+        await checkSession();
+        if (!isAuthenticated || userRole !== 'HR') {
+          navigate('/hr-login');
+        }
+      }
+    };
+    
+    verifyAuth();
+
+    const sessionInterval = setInterval(checkSession, 5 * 60 * 1000);
+    return () => clearInterval(sessionInterval);
+  }, [isAuthenticated, userRole, navigate, checkSession]);
 
   // Close mobile menu when screen size changes
   useEffect(() => {
@@ -29,11 +45,15 @@ const HRDashboard = () => {
   const handleLogout = async () => {
     try {
       await logout();
-      navigate('/login');
+      navigate('/hr-login');
     } catch (error) {
       setError('Failed to log out');
     }
   };
+
+  if (!isAuthenticated || userRole !== 'HR') {
+    return null;
+  }
 
   return (
     <div className="hr-dashboard-container">

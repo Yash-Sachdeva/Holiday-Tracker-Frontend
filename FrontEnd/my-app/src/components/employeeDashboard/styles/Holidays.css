@@ -1,0 +1,139 @@
+.holidays-page {
+  padding: 20px;
+}
+
+.holidays-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.calendar-section {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-section h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Calendar customization */
+.react-calendar {
+  width: 100% !important;
+  border: none !important;
+  padding: 10px;
+}
+
+.holiday-tile {
+  background-color: #e8f4ff !important;
+  color: #0066cc !important;
+}
+
+.today-tile {
+  background-color: #fff3e0 !important;
+  font-weight: bold;
+}
+
+.weekend-tile {
+  color: #ff4444;
+}
+
+/* Holiday details section */
+.holiday-details-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.selected-date-details,
+.upcoming-holidays {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.date-display {
+  font-size: 1.2em;
+  color: #666;
+  margin: 10px 0;
+}
+
+.holiday-badge {
+  display: inline-block;
+  background-color: #e8f4ff;
+  color: #0066cc;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.holiday-info h4 {
+  margin: 10px 0;
+  color: #333;
+}
+
+.upcoming-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.upcoming-item {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.upcoming-item:last-child {
+  border-bottom: none;
+}
+
+.upcoming-item .date {
+  min-width: 80px;
+  font-weight: bold;
+  color: #0066cc;
+}
+
+.upcoming-item .details {
+  display: flex;
+  flex-direction: column;
+}
+
+.upcoming-item .details strong {
+  margin-bottom: 4px;
+}
+
+.upcoming-item .details span {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.no-holiday,
+.no-upcoming {
+  color: #666;
+  font-style: italic;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.error {
+  color: #ff4444;
+}
+
+@media (max-width: 768px) {
+  .holidays-container {
+    grid-template-columns: 1fr;
+  }
+}

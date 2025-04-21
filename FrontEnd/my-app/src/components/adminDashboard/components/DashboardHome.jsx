@@ -18,13 +18,13 @@ const DashboardHome = () => {
     try {
       setLoading(true);
       const [hrsResponse, employeesResponse, clientsResponse] = await Promise.all([
-        fetch('http://localhost:8080/auth/admin/dashboard/total-hrs', {
+        fetch('http://localhost:8000/adms/admin/dashboard/total-hrs', {
           credentials: 'include'
         }),
-        fetch('http://localhost:8080/auth/admin/dashboard/total-employees', {
+        fetch('http://localhost:8000/adms/admin/dashboard/total-employees', {
           credentials: 'include'
         }),
-        fetch('http://localhost:8080/auth/admin/dashboard/total-clients', {
+        fetch('http://localhost:8000/adms/admin/dashboard/total-clients', {
           credentials: 'include'
         })
       ]);
