@@ -231,6 +231,8 @@
   width: 100%;
   max-width: 500px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1001;
 }
 
 .holiday-form h3 {
@@ -256,6 +258,11 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
+  /* Add these properties to ensure proper layout */
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .form-group textarea {

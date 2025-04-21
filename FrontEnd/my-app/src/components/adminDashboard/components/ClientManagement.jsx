@@ -56,8 +56,8 @@ const ClientManagement = () => {
     e.preventDefault();
     try {
       const url = editingClient
-        ? 'http://localhost:8080/admin/update-client'
-        : 'http://localhost:8080/admin/add-client';
+        ? 'http://localhost:8000/cs/client/update-client'
+        : 'http://localhost:8000/cs/client/register-client';
 
       const method = editingClient ? 'PUT' : 'POST';
 
