@@ -15,6 +15,7 @@ import {
   Clock,
   Settings
 } from 'lucide-react';
+import Holidays from './components/Holidays';
 
 const EmployeeDashboard = () => {
   const navigate = useNavigate();
@@ -352,32 +353,7 @@ const EmployeeDashboard = () => {
               </div>
 
               <div className="modern-card upcoming-holidays-card">
-                <h3>Upcoming Holidays</h3>
-                {upcomingHolidays.length > 0 ? (
-                  <ul className="upcoming-list">
-                    {upcomingHolidays.map((holiday) => (
-                      <li key={holiday.holidayId} className="upcoming-item">
-                        <div className="upcoming-date">
-                          {new Date(holiday.holidayDate).toLocaleDateString('en-US', { 
-                            day: 'numeric',
-                            month: 'short'
-                          })}
-                        </div>
-                        <div className="upcoming-details">
-                          <strong>{holiday.name}</strong>
-                          <span>{holiday.description}</span>
-                          <span>
-                            {new Date(holiday.holidayDate).toLocaleDateString('en-US', { 
-                              weekday: 'long' 
-                            })}
-                          </span>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="no-events">No upcoming holidays</p>
-                )}
+                <Holidays />
               </div>
             </div>
           </div>

@@ -1,139 +1,125 @@
 .holidays-page {
-  padding: 20px;
-}
-
-.holidays-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  max-width: 1200px;
+  background-color: var(--light-bg);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 600px;
   margin: 0 auto;
 }
 
-.calendar-section {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.calendar-section h2 {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-/* Calendar customization */
-.react-calendar {
-  width: 100% !important;
-  border: none !important;
-  padding: 10px;
-}
-
-.holiday-tile {
-  background-color: #ffebee !important; /* Light red background */
-  color: #d32f2f !important; /* Dark red text */
-}
-
-.today-tile {
-  background-color: #fff3e0 !important;
-  font-weight: bold;
-}
-
-.weekend-tile {
-  color: #ff4444;
-}
-
-/* Holiday details section */
-.holiday-details-section {
+.upcoming-holidays {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-.selected-date-details,
-.upcoming-holidays {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.holiday-card {
+  width: 100%;
+  background-color: var(--white);
+  border-left: 6px solid var(--primary-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  transition: var(--transition);
 }
 
-.date-display {
-  font-size: 1.2em;
-  color: #666;
-  margin: 10px 0;
+.holiday-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.holiday-card .date {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.holiday-card .details strong {
+  font-size: 1.25rem;
+  color: var(--dark-color);
+}
+
+.holiday-card .details p {
+  color: var(--text-color);
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.navigation-controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.nav-button:disabled {
+  background-color: var(--border-color);
+  color: var(--light-text);
+  cursor: not-allowed;
+}
+
+.nav-button:hover:not(:disabled) {
+  background-color: var(--secondary-color);
+}
+
+.holidays-pagination {
+  font-size: 0.85rem;
+  color: var(--light-text);
+  margin-top: 0.5rem;
+}
+
+.no-upcoming {
+  color: var(--light-text);
+  font-style: italic;
+}
+
+.holiday-details {
+  background-color: var(--primary-light);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-top: 1rem;
+  border-left: 4px solid var(--primary-color);
 }
 
 .holiday-badge {
   display: inline-block;
-  background-color: #d32f2f; /* Dark red background */
-  color: white;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 0.9em;
-  margin-bottom: 10px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+  animation: pulse 2s infinite;
 }
 
-.holiday-info h4 {
-  margin: 10px 0;
-  color: #333;
+.holiday-details h4 {
+  margin: 0.5rem 0;
+  color: var(--dark-color);
+  font-size: 1.1rem;
 }
 
-.upcoming-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.holiday-details p {
+  color: var(--text-color);
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
 }
 
-.upcoming-item {
-  display: flex;
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.upcoming-item:last-child {
-  border-bottom: none;
-}
-
-.upcoming-item .date {
-  min-width: 80px;
-  font-weight: bold;
-  color: #0066cc;
-}
-
-.upcoming-item .details {
-  display: flex;
-  flex-direction: column;
-}
-
-.upcoming-item .details strong {
-  margin-bottom: 4px;
-}
-
-.upcoming-item .details span {
-  font-size: 0.9em;
-  color: #666;
-}
-
-.no-holiday,
-.no-upcoming {
-  color: #666;
-  font-style: italic;
-}
-
-.loading,
-.error {
-  text-align: center;
-  padding: 40px;
-  color: #666;
-}
-
-.error {
-  color: #ff4444;
-}
-
-@media (max-width: 768px) {
-  .holidays-container {
-    grid-template-columns: 1fr;
-  }
+.holiday-date {
+  font-size: 0.85rem;
+  color: var(--light-text);
+  margin-top: 0.75rem;
 }
