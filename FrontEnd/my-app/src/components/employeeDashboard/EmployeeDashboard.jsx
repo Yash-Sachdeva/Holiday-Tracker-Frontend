@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Routes, Route } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import Calendar from 'react-calendar';
 import Sidebar from './components/Sidebar';
 import ProfileInfo from './components/ProfileInfo';
+import HolidaysPage from './pages/HolidaysPage';
 import 'react-calendar/dist/Calendar.css';
 import './EmployeeDashboard.css';
 import { 
@@ -16,6 +17,96 @@ import {
   Settings
 } from 'lucide-react';
 import Holidays from './components/Holidays';
+
+const DashboardHome = ({ userData, holidays, selectedDate, setSelectedDate, holidayDetails, events, upcomingHolidays, tileClassName, tileContent, handleDateClick }) => (
+  <>
+    <div className="page-header">
+      <h1>Holiday Dashboard</h1>
+      <p className="welcome-message">Welcome back, {userData.name}!</p>
+    </div>
+
+    <div className="dashboard-stats">
+      <div className="stat-card">
+        <div className="stat-icon holiday-icon">
+          <CalendarIcon size={20} />
+        </div>
+        <div className="stat-content">
+          <h4>Total Holidays</h4>
+          <p>{holidays.length}</p>
+        </div>
+      </div>
+      <div className="stat-card">
+        <div className="stat-icon upcoming-icon">
+          <Clock size={20} />
+        </div>
+        <div className="stat-content">
+          <h4>Upcoming</h4>
+          <p>{upcomingHolidays.length}</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="modern-dashboard-grid">
+      <div className="calendar-section">
+        <div className="modern-card calendar-card">
+          <div className="card-header">
+            <h2>Company Calendar</h2>
+            <div className="calendar-legend">
+              <span className="legend-item"><span className="dot holiday-dot"></span> Holiday</span>
+              <span className="legend-item"><span className="dot today-dot"></span> Today</span>
+              <span className="legend-item"><span className="dot weekend-dot"></span> Weekend</span>
+            </div>
+          </div>
+          
+          <Calendar
+            onChange={handleDateClick}
+            value={selectedDate}
+            tileClassName={tileClassName}
+            tileContent={tileContent}
+            formatMonthYear={(locale, date) => 
+              date.toLocaleDateString(locale, { month: 'long', year: 'numeric' })
+            }
+            nextLabel={<span className="calendar-nav">›</span>}
+            prevLabel={<span className="calendar-nav">‹</span>}
+            next2Label={<span className="calendar-nav">»</span>}
+            prev2Label={<span className="calendar-nav">«</span>}
+            showNeighboringMonth={false}
+            className="custom-calendar"
+          />
+        </div>
+      </div>
+
+      <div className="date-details-section">
+        <div className="modern-card date-details-card">
+          <h3>Selected Date</h3>
+          <div className="selected-date">
+            <div className="date-number">{selectedDate.getDate()}</div>
+            <div className="date-info">
+              <span className="date-month">
+                {selectedDate.toLocaleDateString('en-US', { month: 'long' })}
+              </span>
+              <span className="date-year">{selectedDate.getFullYear()}</span>
+            </div>
+          </div>
+
+          {holidayDetails ? (
+            <div className="holiday-details">
+              <div className="holiday-badge">Holiday</div>
+              <h4>{holidayDetails.name}</h4>
+              <p>{holidayDetails.description}</p>
+            </div>
+          ) : (
+            <p className="no-events">No events on this date</p>
+          )}
+        </div>
+
+        <div className="modern-card upcoming-holidays-card">
+          <Holidays />
+        </div>
+      </div>
+    </div>
+  </>
+);
 
 const EmployeeDashboard = () => {
   const navigate = useNavigate();
@@ -35,8 +126,6 @@ const EmployeeDashboard = () => {
   const [upcomingHolidays, setUpcomingHolidays] = useState([]);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showProfileInfo, setShowProfileInfo] = useState(false);
-  const [activeSidebarItem, setActiveSidebarItem] = useState('dashboard');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
@@ -272,93 +361,21 @@ const EmployeeDashboard = () => {
         />
         
         <main className={`dashboard-main ${isCollapsed ? 'sidebar-collapsed' : ''}`}>
-          <div className="page-header">
-            <h1>Holiday Dashboard</h1>
-            <p className="welcome-message">Welcome back, {userData.name}!</p>
-          </div>
-
-          <div className="dashboard-stats">
-            <div className="stat-card">
-              <div className="stat-icon holiday-icon">
-                <CalendarIcon size={20} />
-              </div>
-              <div className="stat-content">
-                <h4>Total Holidays</h4>
-                <p>{holidays.length}</p>
-              </div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-icon upcoming-icon">
-                <Clock size={20} />
-              </div>
-              <div className="stat-content">
-                <h4>Upcoming</h4>
-                <p>{upcomingHolidays.length}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="modern-dashboard-grid">
-            <div className="calendar-section">
-              <div className="modern-card calendar-card">
-                <div className="card-header">
-                  <h2>Company Calendar</h2>
-                  <div className="calendar-legend">
-                    <span className="legend-item"><span className="dot holiday-dot"></span> Holiday</span>
-                    <span className="legend-item"><span className="dot today-dot"></span> Today</span>
-                    <span className="legend-item"><span className="dot weekend-dot"></span> Weekend</span>
-                  </div>
-                </div>
-                
-                <Calendar
-                  onChange={handleDateClick}
-                  value={selectedDate}
-                  tileClassName={tileClassName}
-                  tileContent={tileContent}
-                  formatMonthYear={(locale, date) => 
-                    date.toLocaleDateString(locale, { month: 'long', year: 'numeric' })
-                  }
-                  nextLabel={<span className="calendar-nav">›</span>}
-                  prevLabel={<span className="calendar-nav">‹</span>}
-                  next2Label={<span className="calendar-nav">»</span>}
-                  prev2Label={<span className="calendar-nav">«</span>}
-                  showNeighboringMonth={false}
-                  className="custom-calendar"
-                />
-              </div>
-            </div>
-
-            <div className="date-details-section">
-              <div className="modern-card date-details-card">
-                <h3>Selected Date</h3>
-                <div className="selected-date">
-                  <div className="date-number">{selectedDate.getDate()}</div>
-                  <div className="date-info">
-                    <span className="date-month">
-                      {selectedDate.toLocaleDateString('en-US', { month: 'long' })}
-                    </span>
-                    <span className="date-year">{selectedDate.getFullYear()}</span>
-                  </div>
-                </div>
-
-                {holidayDetails ? (
-                  <div className="holiday-details">
-                    <div className="holiday-badge">Holiday</div>
-                    <h4>{holidayDetails.name}</h4>
-                    <p>{holidayDetails.description}</p>
-                  </div>
-                ) : (
-                  <p className="no-events">No events on this date</p>
-                )}
-              </div>
-
-              <div className="modern-card upcoming-holidays-card">
-                <Holidays />
-              </div>
-            </div>
-          </div>
-
-          {error && <div className="error-message">{error}</div>}
+          <Routes>
+            <Route path="/" element={<DashboardHome 
+              userData={userData}
+              holidays={holidays}
+              selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate}
+              holidayDetails={holidayDetails}
+              events={events}
+              upcomingHolidays={upcomingHolidays}
+              tileClassName={tileClassName}
+              tileContent={tileContent}
+              handleDateClick={handleDateClick}
+            />} />
+            <Route path="/holidays" element={<HolidaysPage userData={userData} />} />
+          </Routes>
         </main>
       </div>
 

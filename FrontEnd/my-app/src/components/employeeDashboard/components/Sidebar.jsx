@@ -1,11 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
-import { Home, Calendar, Clock, Settings, HelpCircle } from 'lucide-react';
+import { Home, Calendar, Settings, HelpCircle } from 'lucide-react';
 import '../styles/Sidebar.css';
 
-const Sidebar = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-
+const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
   const menuItems = [
     { path: '/employee-dashboard', icon: <Home size={20} />, name: 'Dashboard', exact: true },
     { path: '/employee-dashboard/holidays', icon: <Calendar size={20} />, name: 'Holidays' },
