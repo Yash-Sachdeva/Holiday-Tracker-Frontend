@@ -17,6 +17,7 @@ import {
   Settings
 } from 'lucide-react';
 import Holidays from './components/Holidays';
+import SettingPage from './pages/SettingPage';
 
 const DashboardHome = ({ userData, holidays, selectedDate, setSelectedDate, holidayDetails, events, upcomingHolidays, tileClassName, tileContent, handleDateClick }) => (
   <>
@@ -375,6 +376,7 @@ const EmployeeDashboard = () => {
               handleDateClick={handleDateClick}
             />} />
             <Route path="/holidays" element={<HolidaysPage userData={userData} />} />
+            <Route path="/settings" element={<SettingPage  userData={userData} />} />
           </Routes>
         </main>
       </div>

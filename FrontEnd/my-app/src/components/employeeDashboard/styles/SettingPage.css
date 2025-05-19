@@ -1,0 +1,40 @@
+.settings-container {
+  padding: 2rem;
+}
+
+.settings-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.settings-grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: nowrap; /* Prevent wrapping to keep them in a row */
+  overflow-x: auto;   /* Enable horizontal scroll if needed */
+  padding-bottom: 1rem;
+}
+
+.settings-card {
+  min-width: 200px;
+  height: 160px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  flex-shrink: 0; /* Prevent shrinking when container is narrow */
+}
+
+.settings-card:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
