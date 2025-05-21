@@ -3,6 +3,10 @@ import '../styles/HolidayManagement.css';
 import { IoArrowBack } from 'react-icons/io5';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import HolidayForm from './HolidayFrom';
+import { toast } from 'react-toastify';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+
 
 const HolidayManagement = () => {
   const [clients, setClients] = useState([]);
@@ -93,21 +97,33 @@ const HolidayManagement = () => {
   };
 
   const handleDeleteHoliday = async (holidayId) => {
-    if (!window.confirm('Are you sure you want to delete this holiday?')) return;
+    confirmAlert({
+      title:'Confirm to Submit',
+      message:'Are you sure you want to delete this holiday?',
+      buttons:[
+        {
+          label:'Yes',
+          onClick : async()=>{
+            try {
+                  const response = await fetch(`http://localhost:8000/hs/holiday/delete/${holidayId}`, {
+                    method: 'DELETE',
+                    credentials: 'include'
+                  });
 
-    try {
-      const response = await fetch(`http://localhost:8000/hs/holiday/delete/${holidayId}`, {
-        method: 'DELETE',
-        credentials: 'include'
-      });
-
-      if (!response.ok) throw new Error('Failed to delete holiday');
-      
-      // Refresh holidays list
-      fetchHolidays(selectedClient.name);
-    } catch (err) {
-      setError('Failed to delete holiday');
-    }
+                  if (!response.ok) throw new Error('Failed to delete holiday');
+                  
+                  // Refresh holidays list
+                  fetchHolidays(selectedClient.name);
+                } catch (err) {
+                  setError('Failed to delete holiday');
+                } 
+          }
+        },
+        {
+          label:'No'
+        }
+      ] 
+    });
   };
 
   const handleFormSubmit = async (e) => {
@@ -143,7 +159,7 @@ const HolidayManagement = () => {
       setShowHolidayForm(false);
       setEditingHoliday(null);
     } catch (err) {
-      setError('Failed to save holiday');
+      toast.error('Failed to save holiday');
     }
   };
 
@@ -227,7 +243,7 @@ const HolidayManagement = () => {
                   <h3>{client.name}</h3>
                   <p className="client-details">
                     <span>SPOC: {client.spocName}</span>
-                    <span>Total Holidays: {client.totalHolidays}</span>
+                    <span>SPOC No, : {client.spocPno}</span>
                   </p>
                 </div>
               ))}

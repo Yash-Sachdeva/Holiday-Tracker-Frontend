@@ -6,7 +6,7 @@ import EmpLogin from './components/empLogin/EMPLogin';
 import HRDashboard from './components/hrDashboard/HRDashboard';
 import EmployeeDashboard from './components/employeeDashboard/EmployeeDashboard';
 import AdminDashboard from './components/adminDashboard/AdminDashboard';
-
+import { ToastContainer } from 'react-toastify';
 // Create HomePage as a separate component
 const HomePage = () => {
   const navigate = useNavigate();
@@ -261,6 +261,18 @@ function App() {
           } />
         </Routes>
       </AuthProvider>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </Router>
   );
 }

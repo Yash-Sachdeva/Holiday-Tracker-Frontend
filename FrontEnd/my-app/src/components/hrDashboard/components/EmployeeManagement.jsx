@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import '../styles/EmployeeManagement.css';
+import { toast } from 'react-toastify';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'
 const EmployeeManagement = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -100,7 +102,7 @@ const EmployeeManagement = () => {
         
         // Check if error is about existing employee
         if (errorText.includes("already exists")) {
-          alert("An employee with this email already exists. Please use a different email address.");
+          toast.error("An employee with this email already exists. Please use a different email address.");
           return;
         }
         
@@ -108,7 +110,7 @@ const EmployeeManagement = () => {
       }
 
       // Show success message
-      alert(editingEmployee ? 'Employee Updated Successfully' : 'Employee Registered Successfully');
+      toast.success(editingEmployee ? 'Employee Updated Successfully' : 'Employee Registered Successfully');
       
       await fetchEmployees();
       setShowAddForm(false);
@@ -127,29 +129,44 @@ const EmployeeManagement = () => {
       setError(err.message);
       // Only show alert for non-duplicate email errors
       if (!err.message.includes("already exists")) {
-        alert(err.message);
+        toast.error(err.message);
       }
     }
   };
 
   const handleDelete = async (employeeId) => {
-    try {
-      const response = await fetch(`http://localhost:8000/hrs/hr/delete-employee/${employeeId}`, {
-        method: 'DELETE',
-        credentials: 'include'
-      });
+    confirmAlert({
+          title:'Confirm to Submit',
+          message:'Are you sure you want to delete this holiday?',
+          buttons:[
+            {
+              label:'Yes',
+              onClick : async()=>{
+                try {
+                      const response = await fetch(`http://localhost:8000/hrs/hr/delete-employee/${employeeId}`, {
+                        method: 'DELETE',
+                        credentials: 'include'
+                      });
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(errorText || 'Failed to delete employee');
-      }
-      
-      alert('Employee Deleted Successfully');
-      await fetchEmployees();
-    } catch (err) {
-      setError(err.message);
-      alert(err.message);
-    }
+                      if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error(errorText || 'Failed to delete employee');
+                      }
+                      
+                      toast.success('Employee Deleted Successfully');
+                      await fetchEmployees();
+                    } catch (err) {
+                      setError(err.message);
+                      toast.error(err.message);
+                    }              
+              }
+            },
+            {
+              label:'No'
+            }
+          ] 
+        });
+    
   };
 
   const handleEdit = (employee) => {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {toast} from 'react-toastify';
 import '../styles/ChangePassword.css';
 const ChangePassword = ({onClose,userData}) =>{
     const [oldPassword,setOldPassword] = useState('');
@@ -30,7 +31,7 @@ const ChangePassword = ({onClose,userData}) =>{
                 setError("Password Entered is Wrong");
             }
             else{
-                alert("Password Change Successfully");
+                toast.success("Password Change Successfully");
                 onClose();
             }
         }
