@@ -114,7 +114,7 @@ const DashboardHome = () => {
               <h4>Employee Management</h4>
               <div className="dept-stats">
                 <div className="dept-stat">
-                  <span className="label">Total Employees</span>
+                  <span className="label">Total Employees: </span>
                   <span className="value">{stats.totalEmployees}</span>
                 </div>
               </div>

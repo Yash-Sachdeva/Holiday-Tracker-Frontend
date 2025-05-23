@@ -6,11 +6,11 @@
 }
 
 .welcome-banner {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: white;
   border-radius: 15px;
   padding: 30px;
   margin-bottom: 30px;
-  color: var(--white);
+  color: mediumslateblue;
 }
 
 .welcome-text h2 {
@@ -23,6 +23,7 @@
   margin: 10px 0 0;
   opacity: 0.9;
   font-size: 1.1rem;
+  color: cadetblue;
 }
 
 .analytics-grid {

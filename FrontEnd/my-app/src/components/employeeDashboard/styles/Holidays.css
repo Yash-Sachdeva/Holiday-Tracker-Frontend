@@ -16,7 +16,7 @@
 
 .holiday-card {
   width: 100%;
-  background-color: var(--white);
+  background-color: var(--white) !important;
   border-left: 6px solid var(--primary-color);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);

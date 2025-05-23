@@ -81,7 +81,7 @@ const Holidays = () => {
         <h2>Upcoming Holiday</h2>
 
         {currentHoliday ? (
-          <div className="holiday-card">
+          <div className="holiday-card" style={{ backgroundColor: 'powderblue !important' }}>
             <div className="date">
               {new Date(currentHoliday.holidayDate).toLocaleDateString('en-US', {
                 weekday: 'long',

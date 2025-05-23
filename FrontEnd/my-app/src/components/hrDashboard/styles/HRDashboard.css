@@ -4,77 +4,130 @@
   flex-direction: column;
   min-height: 100vh;
   background-color: #f8f9fa;
+  background-image: url('./Figure.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
 }
 
-/* Navigation Bar */
-.dashboard-nav {
-  position: fixed;
+/* Add overlay for better text readability */
+.hr-dashboard-container::before {
+  content: '';
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(25, 118, 210, 0.85), rgba(13, 71, 161, 0.9));
+  z-index: 0;
 }
 
-.nav-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 20px;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Sidebar styling */
+.sidebar {
+  background-color: rgba(63, 81, 181, 0.9) !important;
+  color: white !important;
+  backdrop-filter: blur(5px);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.nav-content h1 {
-  margin: 0;
-  font-size: 1.5rem;
-  color: #2c3e50;
-  font-weight: 600;
+.sidebar a, .sidebar button {
+  color: white !important;
 }
 
-.logout-btn {
-  padding: 8px 16px;
-  background-color: #e74c3c;
+.sidebar a:hover, .sidebar button:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Welcome box styling */
+.welcome-box {
+  background-color: white !important;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-message {
+  background-color: #3f51b5;
   color: white;
-  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.welcome-date {
+  color: #757575;
+}
+
+/* Employee cards styling */
+.employee-card {
+  background-color: dodgerblue !important;
+  color: white !important;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.employee-card h3 {
+  color: white !important;
+  margin-top: 0;
+}
+
+.employee-detail {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 0.5rem;
   border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  margin: 0.5rem 0;
 }
 
-.logout-btn:hover {
-  background-color: #c0392b;
+/* Holiday cards styling */
+.holiday-card {
+  background-color: #3f51b5 !important;
+  color: white !important;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Dashboard Layout */
-.dashboard-content {
-  display: flex;
-  margin-top: 60px;
-  min-height: calc(100vh - 60px);
+.holiday-card h3 {
+  color: slateblue !important;
+  margin-top: 0;
 }
 
-.dashboard-main {
-  flex: 1;
-  padding: 20px;
-  margin-left: 250px; /* Default sidebar width */
-  background-color: #f8f9fa;
-  transition: margin-left 0.3s ease;
+.holiday-detail {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin: 0.5rem 0;
 }
 
-.dashboard-sidebar.collapsed + .dashboard-main {
-  margin-left: 72px; /* Collapsed sidebar width */
-}
-
-/* Section Content */
+/* Dashboard content sections */
 .section-content {
   background-color: white;
   border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Quick actions and system overview */
+.quick-actions, .system-overview {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.action-item, .overview-item {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 /* Common Components */

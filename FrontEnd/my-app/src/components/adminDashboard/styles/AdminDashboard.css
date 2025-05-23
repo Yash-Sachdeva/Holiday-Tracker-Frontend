@@ -3,7 +3,24 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background-image: url('Figure.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 0;
+}
+
+/* Overlay for readability */
+.admin-dashboard-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(25, 118, 210, 0.85), rgba(13, 71, 161, 0.9));
+  z-index: 0;
 }
 
 /* Navigation Bar */
@@ -13,8 +30,9 @@
   left: 0;
   right: 0;
   height: 60px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
 
@@ -26,12 +44,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .nav-content h1 {
   margin: 0;
   font-size: 1.5rem;
-  color: #2c3e50;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -55,15 +75,19 @@
   margin-top: 60px;
   min-height: calc(100vh - 60px);
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .dashboard-main {
   flex: 1;
   padding: 20px;
-  margin-left: 250px; /* Default sidebar width */
-  background-color: #f8f9fa;
+  margin-left: 250px;
+  background: transparent;
   transition: margin-left 0.3s ease;
   width: calc(100% - 250px);
+  position: relative;
+  z-index: 1;
 }
 
 .dashboard-sidebar.collapsed + .dashboard-main {
@@ -73,11 +97,14 @@
 
 /* Section Content */
 .section-content {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   margin-bottom: 2rem;
+  backdrop-filter: blur(5px);
+  position: relative;
+  z-index: 1;
 }
 
 /* Common Components */
@@ -86,6 +113,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .actions-bar h2 {
@@ -101,7 +130,7 @@
     margin-left: 200px;
     width: calc(100% - 200px);
   }
-  
+
   .dashboard-sidebar.collapsed + .dashboard-main {
     margin-left: 60px;
     width: calc(100% - 60px);
