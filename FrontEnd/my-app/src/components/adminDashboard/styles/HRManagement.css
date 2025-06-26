@@ -109,11 +109,11 @@
 
 .position {
   font-weight: 500;
-  color: navajowhite !important;
+  color: black !important;
 }
 
 .department {
-  background: blueviolet;
+  background: white;
   display: inline-block;
   padding: 4px 8px;
   border-radius: 4px;

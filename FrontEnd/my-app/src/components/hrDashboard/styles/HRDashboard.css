@@ -4,7 +4,7 @@
   flex-direction: column;
   min-height: 100vh;
   background-color: #f8f9fa;
-  background-image: url('./Figure.webp');
+  /* background-image: url('./Figure.webp'); */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -19,7 +19,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(25, 118, 210, 0.85), rgba(13, 71, 161, 0.9));
+  background: linear-gradient(135deg, rgba(81, 168, 255, 0.85), rgba(13, 71, 161, 0.9));
   z-index: 0;
 }
 
@@ -62,8 +62,8 @@
 
 /* Employee cards styling */
 .employee-card {
-  background-color: dodgerblue !important;
-  color: white !important;
+  background-color: white !important;
+  color: black !important;
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1rem;
@@ -71,7 +71,7 @@
 }
 
 .employee-card h3 {
-  color: white !important;
+  color: black !important;
   margin-top: 0;
 }
 

@@ -170,6 +170,9 @@ const HolidayManagement = () => {
 
   return (
     <div className="holiday-management">
+      <div className="page-header">
+        <h2>Holiday Management</h2>
+      </div>
       <div className="content-section">
         {selectedClient ? (
           <>
@@ -229,7 +232,7 @@ const HolidayManagement = () => {
         ) : (
           <>
             <div className="section-header">
-              <h3>Holiday Management</h3>
+              <h3>Client List</h3>
               <p className="section-description">Select a client to view and manage their holidays</p>
             </div>
 

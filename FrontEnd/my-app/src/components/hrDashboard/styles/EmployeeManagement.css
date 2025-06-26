@@ -91,15 +91,15 @@
 }
 
 .employee-card {
-  background-color: dodgerblue !important;
-  color: white !important;
+  background-color: white !important;
+  color: black !important;
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .employee-card h3 {
-  color: white !important;
+  color: black !important;
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 1.25rem;
